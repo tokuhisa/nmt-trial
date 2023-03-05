@@ -21,3 +21,5 @@ cmake --build . --config Release --target install
 
 cp $ROOT_DIR/icu/bin64/icudt*.dll $ROOT_DIR/outputs/bin/
 cp $ROOT_DIR/icu/bin64/icuuc*.dll $ROOT_DIR/outputs/bin/
+cp $ROOT_DIR/icu/lib64/icudt*.lib $ROOT_DIR/outputs/lib/
+cp $ROOT_DIR/icu/lib64/icuuc*.lib $ROOT_DIR/outputs/lib/
