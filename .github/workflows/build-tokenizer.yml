@@ -12,15 +12,16 @@ jobs:
         git clone https://github.com/OpenNMT/Tokenizer.git tokenizer -b v1.37.1 --depth 1 --recursive
 
     - name: Build
+      working-directory: ./tokenizer
       run: |
-        cd tokenizer && bash ./bindings/python/tools/prepare_build_environment_windows.sh
-    
+        bash ../tools/build_tokenizer.sh
+
     - name: The job has succeeded
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
         name: tokenizer
-        path: tokenizer/bindings/python/pyonmttok
+        path: tokenizer/bin
         
     # - name: Setup tmate session
     #   if: ${{ failure() }}
