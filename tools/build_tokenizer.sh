@@ -16,7 +16,7 @@ rm -r *_Release
 rm -rf build
 mkdir build
 cd build
-cmake -DLIB_ONLY=ON -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/ ..
+cmake -DLIB_ONLY=OFF -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/ ..
 cmake --build . --config Release --target install
 
 cp $ROOT_DIR/icu/bin64/icudt*.dll $ROOT_DIR/outputs/bin/
