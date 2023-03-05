@@ -1,0 +1,31 @@
+name: Build tokenizer
+
+on: [ workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Git clone
+      run: |
+        git clone git@github.com:OpenNMT/Tokenizer.git tokenizer -b v1.37.1 --depth 1 --recursive
+        mkdir ./tokenizer/build
+
+    - name: Build
+      working-directory: ./tokenizer/build
+      run: |
+        cmake ..
+        make
+    
+    - name: The job has succeeded
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: tokenizer
+        path: tokenizer/build
+        
+    # - name: Setup tmate session
+    #   if: ${{ failure() }}
+    #   uses: mxschmitt/action-tmate@v3
+    #   timeout-minutes: 30
