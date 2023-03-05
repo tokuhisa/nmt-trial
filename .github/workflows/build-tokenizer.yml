@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Git clone
       run: |
-        git clone git@github.com:OpenNMT/Tokenizer.git tokenizer -b v1.37.1 --depth 1 --recursive
+        git clone https://github.com/OpenNMT/Tokenizer.git tokenizer -b v1.37.1 --depth 1 --recursive
         mkdir ./tokenizer/build
 
     - name: Build
