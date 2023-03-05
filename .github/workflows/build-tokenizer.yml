@@ -26,7 +26,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: tokenizer
-        path: tokenizer/bin
+        path: tokenizer/outputs
         
     # - name: Setup tmate session
     #   if: ${{ failure() }}
