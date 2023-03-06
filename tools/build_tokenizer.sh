@@ -17,7 +17,7 @@ rm -rf build
 mkdir build
 cd build
 cmake -DLIB_ONLY=OFF -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/ -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build . --config Release --target install
+cmake --build . --config Debug --target install
 
 cp $ROOT_DIR/icu/bin64/icudt*.dll $ROOT_DIR/outputs/bin/
 cp $ROOT_DIR/icu/bin64/icuuc*.dll $ROOT_DIR/outputs/bin/
