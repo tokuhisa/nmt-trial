@@ -14,16 +14,16 @@ curl -L -nv -o webimage.exe https://registrationcenter-download.intel.com/akdlm/
 ./webimage.exe -s -x -f webimage_extracted --log extract.log
 rm webimage.exe
 ./webimage_extracted/bootstrapper.exe -s --action install --components="intel.oneapi.win.mkl.devel" --eula=accept -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir=.
-# -> destination: 
+# Installed Location: C:\Program Files (x86)\Intel\oneAPI
 
-# ONEDNN_VERSION=3.0.1
-# curl -L -O https://github.com/oneapi-src/oneDNN/archive/refs/tags/v${ONEDNN_VERSION}.tar.gz
-# tar xf *.tar.gz && rm *.tar.gz
-# cd oneDNN-*
-# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=oneDNN/Release -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
-# cmake --build . --config Release --target install --parallel 2
-# cd ..
-# rm -r oneDNN-*
+ONEDNN_VERSION=3.0.1
+curl -L -O https://github.com/oneapi-src/oneDNN/archive/refs/tags/v${ONEDNN_VERSION}.tar.gz
+tar xf *.tar.gz && rm *.tar.gz
+cd oneDNN-*
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=oneDNN/Release -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
+cmake --build . --config Release --target install --parallel 2
+cd ..
+rm -r oneDNN-*
 
 # mkdir build
 # cd build
