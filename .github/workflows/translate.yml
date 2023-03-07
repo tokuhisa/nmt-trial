@@ -8,25 +8,27 @@ jobs:
 
     steps:
     - name: Initialize
-      uses: actions/checkout@v2
-      with:
-        submodules: true
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 30
+    #   uses: actions/checkout@v2
+    #   with:
+    #     submodules: true
 
-    - name: Git clone
-      run: |
-        git clone https://github.com/OpenNMT/CTranslate2.git translate -b v3.7.0 --depth 1 --recursive
+    # - name: Git clone
+    #   run: |
+    #     git clone https://github.com/OpenNMT/CTranslate2.git translate -b v3.7.0 --depth 1 --recursive
 
-    - name: Build
-      working-directory: ./translate
-      run: |
-        bash ../tools/build_translate.sh
+    # - name: Build
+    #   working-directory: ./translate
+    #   run: |
+    #     bash ../tools/build_translate.sh
 
-    - name: The job has succeeded
-      if: ${{ success() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: translate
-        path: translate/outputs
+    # - name: The job has succeeded
+    #   if: ${{ success() }}
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: translate
+    #     path: translate/outputs
         
     # - name: Setup tmate session
     #   if: ${{ failure() }}
