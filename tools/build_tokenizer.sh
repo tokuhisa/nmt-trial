@@ -22,8 +22,8 @@ cp $ROOT_DIR/icu/bin64/icuuc*.dll $ROOT_DIR/outputs/icu/
 rm -rf build
 mkdir build
 cd build
-cmake -DLIB_ONLY=OFF -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release/ -DCMAKE_BUILD_TYPE=Release ..
+cmake -DLIB_ONLY=ON -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release/ -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release --target install
 
-cmake -DLIB_ONLY=OFF -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug/ -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DLIB_ONLY=ON -DICU_ROOT=$ROOT_DIR/icu/ -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug/ -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build . --config Debug --target install

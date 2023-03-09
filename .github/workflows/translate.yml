@@ -23,10 +23,12 @@ jobs:
 
     - name: The job has succeeded
       if: ${{ success() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: translate
-        path: translate/outputs
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 30
+      # uses: actions/upload-artifact@v2
+      # with:
+      #   name: translate
+      #   path: translate/outputs
         
     - name: Setup tmate session
       if: ${{ failure() }}

@@ -8,6 +8,7 @@ ROOT_DIR=$PWD
 mkdir outputs
 mkdir outputs/Release
 mkdir outputs/Debug
+mkdir outputs/oneAPI
 mkdir C:/oneDNN
 mkdir C:/oneDNN/Release
 mkdir C:/oneDNN/Debug
@@ -19,21 +20,21 @@ rm webimage.exe
 ./webimage_extracted/bootstrapper.exe -s --action install --components="intel.oneapi.win.mkl.devel" --eula=accept -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir=.
 # Installed Location: C:\Program Files (x86)\Intel\oneAPI
 
-ONEDNN_VERSION=3.0.1
-curl -L -O https://github.com/oneapi-src/oneDNN/archive/refs/tags/v${ONEDNN_VERSION}.tar.gz
-tar xf *.tar.gz && rm *.tar.gz
-cd oneDNN-*
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
-cmake --build . --config Release --target install --parallel 2
-# cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Debug" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
-# cmake --build . --config Debug --target install --parallel 2
-cd ..
-rm -r oneDNN-*
+# ONEDNN_VERSION=3.0.1
+# curl -L -O https://github.com/oneapi-src/oneDNN/archive/refs/tags/v${ONEDNN_VERSION}.tar.gz
+# tar xf *.tar.gz && rm *.tar.gz
+# cd oneDNN-*
+# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
+# cmake --build . --config Release --target install --parallel 2
+# # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Debug" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
+# # cmake --build . --config Debug --target install --parallel 2
+# cd ..
+# rm -r oneDNN-*
 
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Release" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
-cmake --build . --config Release --target install --parallel 2 --verbose
-# cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Debug" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DBUILD_CLI=OFF -DWITH_DNNL=OFF ..
-cmake --build . --config Debug --target install --parallel 2 --verbose
+# mkdir build
+# cd build
+# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Release" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
+# cmake --build . --config Release --target install --parallel 2 --verbose
+# # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Debug" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
+# cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DBUILD_CLI=OFF -DWITH_DNNL=OFF ..
+# cmake --build . --config Debug --target install --parallel 2 --verbose
