@@ -38,4 +38,5 @@ rm webimage.exe
 # # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Debug" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
 # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Debug -DBUILD_CLI=OFF -DWITH_DNNL=OFF ..
 # cmake --build . --config Debug --target install --parallel 2 --verbose
-cp "C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/redist/intel64_win/compiler/*.dll" $ROOT_DIR/outputs/oneAPI/
+ONEAPI_DLL_DIR="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/redist/intel64_win/compiler"
+cp $ONEAPI_DLL_DIR/*.dll $ROOT_DIR/outputs/oneAPI/
