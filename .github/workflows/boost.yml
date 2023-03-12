@@ -28,7 +28,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: boost
-        path: boost/outputs
+        path: outputs
         
     # - name: Setup tmate session
     #   if: ${{ failure() }}
