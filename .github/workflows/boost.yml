@@ -20,8 +20,7 @@ jobs:
       working-directory: ./boost
       run: |
         ./bootstrap.bat
-        ./b2.exe install -j2 --prefix=../outputs/Debug --with-math variant=debug
-        ./b2.exe install -j2 --prefix=../outputs/Release --with-math variant=release
+        ./b2.exe install -j2 --prefix=../outputs --with-math variant=debug,release address-model=64
 
     - name: The job has succeeded
       if: ${{ success() }}
