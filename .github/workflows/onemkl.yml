@@ -23,12 +23,10 @@ jobs:
 
     - name: The job has succeeded
       if: ${{ success() }}
-      # uses: actions/upload-artifact@v2
-      # with:
-      #   name: onemkl
-      #   path: onemkl/outputs
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 30
+      uses: actions/upload-artifact@v2
+      with:
+        name: onemkl
+        path: onemkl/outputs
         
     # - name: Setup tmate session
     #   if: ${{ failure() }}
