@@ -16,5 +16,5 @@ rm webimage.exe
 ./webimage_extracted/bootstrapper.exe -s --action install --components="intel.oneapi.win.mkl.devel" --eula=accept -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir=.
 # Installed Location: C:\Program Files (x86)\Intel\oneAPI
 
-cp C:/"Program Files (x86)"/Intel/oneAPI/mkl/latest/include/* $ROOT_DIR/outputs/include/
+cp -r C:/"Program Files (x86)"/Intel/oneAPI/mkl/latest/include/* $ROOT_DIR/outputs/include/
 cp C:/"Program Files (x86)"/Intel/oneAPI/mkl/latest/lib/intel64/*.lib $ROOT_DIR/outputs/lib/
