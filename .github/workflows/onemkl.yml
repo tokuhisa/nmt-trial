@@ -1,0 +1,36 @@
+name: oneMKL
+
+on: [ workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Initialize
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Prepare
+      run: |
+        mkdir onemkl
+
+    - name: Build
+      working-directory: ./onemkl
+      run: |
+        bash ../tools/onemkl.sh
+
+    - name: The job has succeeded
+      if: ${{ success() }}
+      # uses: actions/upload-artifact@v2
+      # with:
+      #   name: onemkl
+      #   path: onemkl/outputs
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 30
+        
+    # - name: Setup tmate session
+    #   if: ${{ failure() }}
+    #   uses: mxschmitt/action-tmate@v3
+    #   timeout-minutes: 30
