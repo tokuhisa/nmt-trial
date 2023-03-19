@@ -49,7 +49,7 @@ cd build
 
 # Release build
 # cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Release" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DBUILD_CLI=OFF -DWITH_DNNL=OFF ..
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DBUILD_CLI=OFF -DWITH_DNNL=OFF -DWITH_MKL=OFF ..
 cmake --build . --config Release --target install --parallel 2 --verbose
 
 # Debug build
