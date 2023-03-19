@@ -33,13 +33,11 @@ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDN
 cmake --build . --config Release --target install --parallel 2
 # cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=SHARED -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
 # cmake --build . --config Release --target install --parallel 2
+# cp -r C:/oneDNN/* $ROOT_DIR/outputs/oneDNN/
 
 # Debug build
 # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Debug" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
 # cmake --build . --config Debug --target install --parallel 2
-
-
-cp -r C:/oneDNN/* $ROOT_DIR/outputs/oneDNN/
 
 cd ..
 rm -r oneDNN-*
