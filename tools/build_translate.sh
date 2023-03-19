@@ -9,6 +9,7 @@ mkdir outputs
 mkdir outputs/Release
 mkdir outputs/Debug
 mkdir outputs/oneAPI
+mkdir outputs/oneDNN
 mkdir C:/oneDNN
 mkdir C:/oneDNN/Release
 mkdir C:/oneDNN/Debug
@@ -28,12 +29,17 @@ tar xf *.tar.gz && rm *.tar.gz
 cd oneDNN-*
 
 # Release build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
+# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
+# cmake --build . --config Release --target install --parallel 2
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Release" -DDNNL_LIBRARY_TYPE=SHARED -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
 cmake --build . --config Release --target install --parallel 2
 
 # Debug build
 # cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX="C:/oneDNN/Debug" -DDNNL_LIBRARY_TYPE=STATIC -DDNNL_BUILD_EXAMPLES=OFF -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_WORKLOAD=INFERENCE -DDNNL_ENABLE_PRIMITIVE="CONVOLUTION;REORDER" .
 # cmake --build . --config Debug --target install --parallel 2
+
+
+cp -r C:/oneDNN/* $ROOT_DIR/outputs/oneDNN/
 
 cd ..
 rm -r oneDNN-*
@@ -42,7 +48,8 @@ mkdir build
 cd build
 
 # Release build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Release" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
+# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/compiler/lib/intel64_win;C:/oneDNN/Release" -DBUILD_CLI=OFF -DWITH_DNNL=ON ..
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOT_DIR/outputs/Release -DBUILD_CLI=OFF -DWITH_DNNL=OFF ..
 cmake --build . --config Release --target install --parallel 2 --verbose
 
 # Debug build
